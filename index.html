@@ -16,7 +16,7 @@
         body {
             font-family: 'Noto Sans Bengali', sans-serif;
         }
-        /* Custom scrollbar for better aesthetics */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -30,25 +30,30 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #4338ca;
         }
+        .ballot-badge {
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+        }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 antialiased">
+<body class="bg-gray-50 text-gray-900 antialiased">
 
     <!-- Header / Navbar -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-            <div class="text-lg font-bold text-indigo-700">
+            <div class="text-lg font-bold text-indigo-700 flex items-center gap-2">
                 <a href="#">মোঃ শাহরিয়ার যুবায়ের</a>
+                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded border border-indigo-400">ব্যালট: ৫</span>
             </div>
             <div class="hidden md:flex space-x-6">
-                <a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium">আমার সম্পর্কে</a>
-                <a href="#manifesto" class="text-gray-600 hover:text-indigo-600 font-medium">ইশতেহার</a>
-                <a href="#experience" class="text-gray-600 hover:text-indigo-600 font-medium">অভিজ্ঞতা</a>
-                <a href="#activism" class="text-gray-600 hover:text-indigo-600 font-medium">দর্শন ও সক্রিয়তা</a>
-            </div>
-            <!-- Mobile Menu Button (Optional, for simplicity keeping it hidden) -->
-            <div class="md:hidden">
-                <!-- Can add a hamburger icon here if needed -->
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium transition">আমার সম্পর্কে</a>
+                <a href="#manifesto" class="text-gray-600 hover:text-indigo-600 font-medium transition">ইশতেহার</a>
+                <a href="#experience" class="text-gray-600 hover:text-indigo-600 font-medium transition">অভিজ্ঞতা</a>
+                <a href="#activism" class="text-gray-600 hover:text-indigo-600 font-medium transition">দর্শন</a>
             </div>
         </nav>
     </header>
@@ -57,62 +62,75 @@
     <main>
 
         <!-- Hero Section -->
-        <section id="home" class="bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col md:flex-row items-center justify-between gap-12">
+        <section id="home" class="bg-white overflow-hidden relative">
+            <!-- Background decoration -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-indigo-50 blur-3xl opacity-50"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-blue-50 blur-3xl opacity-50"></div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 flex flex-col-reverse md:flex-row items-center justify-between gap-8 relative z-10">
                 <!-- Text Content -->
-                <div class="md:w-3/5 text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-indigo-700 leading-tight">
-                        মোঃ শাহরিয়ার যুবায়ের
+                <div class="md:w-3/5 text-center md:text-left space-y-6">
+                    
+                    <!-- Ballot Number Badge -->
+                    <div class="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-2 rounded-full shadow-lg ballot-badge transform transition hover:scale-105 cursor-default mb-4">
+                        <i data-lucide="vote" class="w-5 h-5"></i>
+                        <span class="text-xl font-bold">ব্যালট নং ৫</span>
+                    </div>
+
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+                        <span class="text-indigo-700">মোঃ শাহরিয়ার যুবায়ের</span>
                     </h1>
-                    <p class="mt-4 text-2xl md:text-3xl font-semibold text-gray-700">
-                        শিক্ষা ও গবেষণা বিষয়ক সম্পাদক
+                    
+                    <div>
+                        <p class="text-2xl md:text-3xl font-semibold text-gray-700">
+                            শিক্ষা ও গবেষণা বিষয়ক সম্পাদক পদপ্রার্থী
+                        </p>
+                        <p class="text-lg text-gray-500 mt-2 font-medium">
+                            জগন্নাথ বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদ (জকসু) নির্বাচন
+                        </p>
+                    </div>
+
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+                        জ্ঞানভিত্তিক, সৃজনশীল ও গবেষণামনস্ক একটি ক্যাম্পাস গড়ার প্রত্যয়ে, শিক্ষার্থীদের অধিকার আদায়ে ও একাডেমিক মানোন্নয়নে আমি কাজ করতে প্রতিজ্ঞাবদ্ধ।
                     </p>
-                    <p class="mt-2 text-xl text-gray-500">
-                        আসন্ন জগন্নাথ বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদ (জকসু) নির্বাচন
-                    </p>
-                    <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto md:mx-0">
-                        জ্ঞানভিত্তিক, সৃজনশীল ও গবেষণামনস্ক একটি ক্যাম্পাস গড়ার প্রত্যয়ে, আমি শিক্ষার্থীদের সেবায় নিজেকে উৎসর্গ করতে প্রস্তুত।
-                    </p>
-                    <div class="mt-8 flex justify-center md:justify-start gap-4">
-                        <a href="#manifesto" class="inline-block bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
-                            আমার ইশতেহার দেখুন
+
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 pt-4">
+                        <a href="#manifesto" class="inline-flex justify-center items-center bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 gap-2">
+                            <i data-lucide="scroll-text" class="w-5 h-5"></i>
+                            ইশতেহার দেখুন
                         </a>
-                        <a href="#experience" class="inline-block bg-gray-200 text-gray-800 font-semibold px-6 py-3 rounded-lg hover:bg-gray-300 transition duration-300">
-                            আমার অভিজ্ঞতা
+                        <a href="#feedback" class="inline-flex justify-center items-center bg-white text-indigo-700 border-2 border-indigo-600 font-semibold px-8 py-3 rounded-lg hover:bg-indigo-50 transition duration-300 gap-2">
+                            <i data-lucide="message-square-plus" class="w-5 h-5"></i>
+                            পরামর্শ দিন
                         </a>
                     </div>
                 </div>
-                <!-- Image Placeholder -->
-                <div class="md:w-2/5 flex justify-center">
-                    <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-2xl border-8 border-indigo-100">
-                        <!-- 
-                            ================================================================
-                            !!! ছবির জন্য নির্দেশনা !!!
-                            নিচের 'src' অ্যাট্রিবিউটে "https://placehold.co/..." এর বদলে 
-                            আপনার নিজের ছবির একটি সরাসরি ওয়েব লিঙ্ক (যেমন Imgur, Postimages) 
-                            দিন। অথবা, এই কোড এডিটরে ছবিটি আপলোড করে সেই লিঙ্কটি এখানে বসান।
-                            ================================================================
-                        -->
+
+                <!-- Image -->
+                <div class="md:w-2/5 flex justify-center relative">
+                    <div class="absolute inset-0 bg-indigo-600 rounded-full blur-2xl opacity-20 transform translate-y-4"></div>
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-white relative z-10">
                         <img 
                             src="https://lh3.googleusercontent.com/a/ACg8ocLML4v2qtIXFK-eqkr6U4f9HhXxjil5_wyMz2m51EIklYvUoDSfxA=s288-c-no" 
-                            alt="মোঃ শাহরিয়ার যুবায়ের এর ছবি"
-                            class="w-full h-full object-cover"
-                            onerror="this.src='https://placehold.co/400x400/E0E7FF/4F46E5?text=মোঃ+শাহরিয়ার+যুবায়ের'; this.onerror=null;"
+                            alt="মোঃ শাহরিয়ার যুবায়ের"
+                            class="w-full h-full object-cover transform hover:scale-110 transition duration-500"
+                            onerror="this.src='https://placehold.co/400x400/E0E7FF/4F46E5?text=Jubayer'; this.onerror=null;"
                         >
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section (Why Me?) -->
+        <!-- About Section -->
         <section id="about" class="py-16 bg-gray-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
-                    কেন আমি এই পদে যোগ্য?
-                </h2>
-                <div class="bg-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
-                    <p class="text-lg text-gray-700 leading-relaxed text-center">
-                        শিক্ষা ও গবেষণা কেবল বিদ্যার প্রসার নয়, এটি ছাত্রসমাজের জ্ঞানচেতনা এবং সৃজনশীল চিন্তাভাবনা জাগ্রত করার শক্তিশালী হাতিয়ার। গবেষণার মেথোডলজির রুলস আয়ত্ত সহ, ইতোমধ্যে আমি রিসার্চ এর কাজের সাথে যুক্ত আছি এবং এছাড়াও বেশ কিছু কনফারেন্সে যুক্ত হওয়ার সুযোগ হয়েছে আমার। রিসার্চ মেথডোলজি, সফটওয়্যার প্রশিক্ষণ (R, SPSS, Python, Stata), ইন্টার্নশিপ ও রিসার্চ অ্যাসিস্ট্যান্টশিপের সুযোগ সৃষ্টি এবং বিশ্ববিদ্যালয়ের গবেষণা কার্যক্রমের মানোন্নয়ন, এই সব কর্মকাণ্ডে আমার অভিজ্ঞতা ও নেতৃত্ব আমাকে এই পদে যোগ্য করে তোলে। আমি ইতিপূর্বে বিভিন্ন সংগঠনের সাথে সার্ভে রিলেটেড কাজ এবং শিক্ষার্থীদের গবেষণার সুযোগ বাড়াতে কার্যকর প্রোগ্রাম আয়োজন করেছি।
+                <div class="bg-white rounded-2xl p-8 md:p-12 shadow-xl border-l-8 border-indigo-600">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                        <i data-lucide="user-check" class="w-8 h-8 text-indigo-600"></i>
+                        কেন আমি এই পদে যোগ্য?
+                    </h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        শিক্ষা ও গবেষণা কেবল বিদ্যার প্রসার নয়, এটি ছাত্রসমাজের জ্ঞানচেতনা এবং সৃজনশীল চিন্তাভাবনা জাগ্রত করার শক্তিশালী হাতিয়ার। গবেষণার মেথোডলজির রুলস আয়ত্ত সহ, ইতোমধ্যে আমি রিসার্চ এর কাজের সাথে যুক্ত আছি এবং এছাড়াও বেশ কিছু কনফারেন্সে যুক্ত হওয়ার সুযোগ হয়েছে আমার। <span class="font-semibold text-indigo-700">রিসার্চ মেথডোলজি, সফটওয়্যার প্রশিক্ষণ (R, SPSS, Python, Stata)</span>, ইন্টার্নশিপ ও রিসার্চ অ্যাসিস্ট্যান্টশিপের সুযোগ সৃষ্টি এবং বিশ্ববিদ্যালয়ের গবেষণা কার্যক্রমের মানোন্নয়ন, এই সব কর্মকাণ্ডে আমার অভিজ্ঞতা ও নেতৃত্ব আমাকে এই পদে যোগ্য করে তোলে।
                     </p>
                 </div>
             </div>
@@ -121,167 +139,106 @@
         <!-- Manifesto Section -->
         <section id="manifesto" class="py-16 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
-                    আমার ইশতেহার
-                    <span class="block text-xl font-normal text-gray-600 mt-2">নির্বাচিত হলে যা করতে ইচ্ছুক</span>
-                </h2>
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">আমার ইশতেহার</h2>
+                    <p class="text-indigo-600 mt-2 font-medium">গবেষণাবান্ধব ক্যাম্পাস গড়তে আমার পরিকল্পনা</p>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+                </div>
 
-                <div class="space-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
-                    <!-- Category: গবেষণা, তহবিল ও অবকাঠামো -->
-                    <div>
-                        <h3 class="flex items-center text-2xl font-bold text-indigo-700 mb-6 border-b-2 border-indigo-200 pb-2">
-                            <i data-lucide="flask-conical" class="w-6 h-6 mr-3"></i>
+                    <!-- Card 1: গবেষণা ও তহবিল -->
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 border border-gray-100">
+                        <h3 class="flex items-center text-xl font-bold text-indigo-700 mb-6 pb-3 border-b border-gray-200">
+                            <i data-lucide="coins" class="w-6 h-6 mr-3"></i>
                             গবেষণা, তহবিল ও অবকাঠামো
                         </h3>
-                        <ul class="list-none space-y-4">
+                        <ul class="space-y-4">
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১. বিশ্ববিদ্যালয়ের বাজেটে গবেষণার বরাদ্দ বাড়ানো:</b> ২.৭০% থেকে বাড়িয়ে ন্যূনতম ৫% এ উন্নীত করার প্রচেষ্টা।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>বাজেট বৃদ্ধি:</b> গবেষণার বরাদ্দ ২.৭০% থেকে ন্যূনতম ৫% এ উন্নীত করার প্রচেষ্টা।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>২. স্থানীয় ও আন্তর্জাতিক ফান্ড সংগ্রহের ব্যবস্থা করা:</b> প্রশাসনিক সহায়তা ও ফ্যাকাল্টি মেম্বারদের মাধ্যমে লিয়াজোঁ করে ফান্ড সংগ্রহ।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>ফান্ড সংগ্রহ:</b> প্রশাসনিক সহায়তায় স্থানীয় ও আন্তর্জাতিক ফান্ড সংগ্রহের ব্যবস্থা করা।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>৩. অ্যালামনাই নেটওয়ার্ক সক্রিয় করে গবেষণা ফান্ড তৈরি:</b> সকল ডিপার্টমেন্টের অ্যালামনাইদের কানেক্ট করার প্লাটফর্ম তৈরি করে ফান্ডিং সহজ করা।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>কেন্দ্রীয় অ্যালামনাই:</b> শিক্ষার্থীদের ক্যারিয়ার ও নেটওয়ার্কিং সুবিধার্থে কেন্দ্রীয় অ্যালামনাই অ্যাসোসিয়েশনের কার্যক্রম গতিশীল ও কার্যকর করতে কাজ করবো।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>৪. ল্যাবের মানোন্নয়ন:</b> বিভিন্ন ডিপার্টমেন্টে ল্যাবের মান উন্নয়ন করা এবং প্রয়োজনীয় ম্যাটেরিয়ালস এর ঘাটতি পূরণে প্রশাসনকে অবগত করা।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>২২. এসির ব্যবস্থা:</b> গরমের তীব্রতা বেশি এমন ডিপার্টমেন্ট ও লাইব্রেরীতে পর্যায়ক্রমে এসির ব্যবস্থা করা।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>ল্যাব ও ক্লাসরুম:</b> ল্যাবের আধুনিকায়ন এবং লাইব্রেরী ও ক্লাসরুমে প্রয়োজনীয় এসির ব্যবস্থা করা।</span>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Category: শিক্ষার্থীদের সুযোগ ও প্রশিক্ষণ -->
-                    <div>
-                        <h3 class="flex items-center text-2xl font-bold text-indigo-700 mb-6 border-b-2 border-indigo-200 pb-2">
-                            <i data-lucide="users" class="w-6 h-6 mr-3"></i>
+                    <!-- Card 2: দক্ষতা ও প্রশিক্ষণ -->
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 border border-gray-100">
+                        <h3 class="flex items-center text-xl font-bold text-indigo-700 mb-6 pb-3 border-b border-gray-200">
+                            <i data-lucide="graduation-cap" class="w-6 h-6 mr-3"></i>
                             শিক্ষার্থীদের সুযোগ ও প্রশিক্ষণ
                         </h3>
-                        <ul class="list-none space-y-4">
+                        <ul class="space-y-4">
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>৫. রিসার্চ অ্যাসিস্ট্যান্টশিপের (RA/TA) সুযোগ তৈরি:</b> হায়ার স্টাডিজের জন্য গুরুত্বপূর্ণ এই সুযোগগুলো খুঁজে বের করে শিক্ষার্থীদের যুক্ত করতে টিম গঠন।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>RA/TA ও ইন্টার্নশিপ:</b> রিসার্চ অ্যাসিস্ট্যান্টশিপ (RA) এবং পেইড/আনপেইড ইন্টার্নশিপের সুযোগ বাড়াতে বিশেষ টিম গঠন।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>৬. ইন্টার্নশিপ বাড়ানো:</b> পেইড এবং আনপেইড ইন্টার্নশিপের সুযোগ সৃষ্টির জন্য আলাদা টিম গঠন।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>স্কিল ডেভেলপমেন্ট:</b> একাডেমিক রাইটিং, ডেটা অ্যানালাইসিস এবং Python, R, SPSS, Stata এর উপর নিয়মিত ফ্রি কর্মশালা।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>৭. রিসার্চ মেথডলজি ওয়ার্কশপ:</b> নিয়মিত ওয়ার্কশপ আয়োজন (জবি রিসার্চ সোসাইটির মাধ্যমে)।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>৮. ডেটা অ্যানালাইসিস ও একাডেমিক রাইটিং প্রশিক্ষণ:</b> অর্জিত জ্ঞান ও নেটওয়ার্ক কাজে লাগিয়ে প্রশিক্ষণের আয়োজন।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>৯. সফটওয়্যার প্রশিক্ষণ (Python, R, SPSS, Stata):</b> নিজে ফ্রি প্রশিক্ষণ প্রদান এবং ইন্ডাস্ট্রি ট্রেইনার দিয়ে প্রশিক্ষণের ব্যবস্থা করা।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১৬. গবেষণা কেন্দ্র সহজলভ্য করা:</b> ল্যাব এক্সেস, ফিল্ড ওয়ার্কের খরচ এবং কনফারেন্সে অংশগ্রহণের জন্য ভর্তুকির ব্যবস্থা করা।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>গবেষণা সহায়তা:</b> ফিল্ড ওয়ার্ক ও কনফারেন্সে অংশগ্রহণের জন্য প্রশাসনিক ভর্তুকির ব্যবস্থা করা।</span>
                             </li>
                         </ul>
                     </div>
-                    
-                    <!-- Category: ডিজিটাল আর্কাইভ ও রিসোর্স -->
-                    <div>
-                        <h3 class="flex items-center text-2xl font-bold text-indigo-700 mb-6 border-b-2 border-indigo-200 pb-2">
-                            <i data-lucide="database" class="w-6 h-6 mr-3"></i>
+
+                    <!-- Card 3: ডিজিটাল রিসোর্স -->
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 border border-gray-100">
+                        <h3 class="flex items-center text-xl font-bold text-indigo-700 mb-6 pb-3 border-b border-gray-200">
+                            <i data-lucide="laptop" class="w-6 h-6 mr-3"></i>
                             ডিজিটাল আর্কাইভ ও রিসোর্স
                         </h3>
-                        <ul class="list-none space-y-4">
+                        <ul class="space-y-4">
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১০. ডিজিটাল লাইব্রেরি ও জার্নাল অ্যাক্সেস:</b> আইটি সেলের সহায়তায় ওয়েবসাইটে রিসোর্স সেকশন তৈরি এবং আন্তর্জাতিক জার্নাল অ্যাক্সেস নিশ্চিত করা।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>ডিজিটাল লাইব্রেরি:</b> আন্তর্জাতিক জার্নাল অ্যাক্সেস নিশ্চিত করা এবং ওয়েবসাইটের রিসোর্স সেকশন সমৃদ্ধ করা।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১১. থিসিস ও গবেষণা পেপারের ডিজিটাল আর্কাইভ:</b> জবির ডিজিটাল আর্কাইভে গুরুত্বপূর্ণ থিসিস পেপারগুলো সংরক্ষণ করা।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>থিসিস আর্কাইভ:</b> জবির ডিজিটাল আর্কাইভে শিক্ষার্থীদের সেরা থিসিস ও পেপারগুলো সংরক্ষণ ও প্রদর্শনের ব্যবস্থা।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>২০. বিশ্ববিদ্যালয়ের ওয়েবসাইট নিয়মিত আপডেট করা:</b> গবেষণা, শিক্ষার্থী অর্জন ও প্রকল্পের তথ্য নিয়মিত প্রকাশ করা।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>২১. গবেষণা ও শিক্ষার্থী অর্জনের তথ্য প্রকাশ:</b> শিক্ষার্থীদের অনুপ্রাণিত করতে নিয়মিত তথ্য প্রকাশ।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>তথ্য আপডেট:</b> বিশ্ববিদ্যালয়ের ওয়েবসাইটে গবেষণা, স্কলারশিপ ও শিক্ষার্থী অর্জনের তথ্য নিয়মিত হালনাগাদ করা।</span>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Category: গবেষণা সংস্কৃতি ও মানোন্নয়ন -->
-                    <div>
-                        <h3 class="flex items-center text-2xl font-bold text-indigo-700 mb-6 border-b-2 border-indigo-200 pb-2">
-                            <i data-lucide="award" class="w-6 h-6 mr-3"></i>
-                            গবেষণা সংস্কৃতি ও মানোন্নয়ন
+                    <!-- Card 4: একাডেমিক মানোন্নয়ন -->
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 border border-gray-100">
+                        <h3 class="flex items-center text-xl font-bold text-indigo-700 mb-6 pb-3 border-b border-gray-200">
+                            <i data-lucide="library" class="w-6 h-6 mr-3"></i>
+                            একাডেমিক সংস্কৃতি ও অধিকার
                         </h3>
-                        <ul class="list-none space-y-4">
+                        <ul class="space-y-4">
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১২. “জবি গবেষণা মেলা” আয়োজন:</b> অন্যান্য বিশ্ববিদ্যালয়ের সাথে কানেক্ট হয়ে দ্রুত গবেষণা মেলার আয়োজন।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>স্টুডেন্ট গ্রাইভেন্স সেল:</b> শিক্ষার্থীদের যেকোনো অভিযোগ বা সমস্যা নির্ভয়ে জানানোর জন্য এবং তার দ্রুত সমাধানে 'স্টুডেন্ট গ্রাইভেন্স সেল' গঠন নিশ্চিত করবো।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১৩. অনুষদভিত্তিক বেস্ট রিসার্চ অ্যাওয়ার্ড প্রদান:</b> কম বাজেটে শিক্ষার্থীদের উৎসাহ প্রদান।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>গবেষণা মেলা ও অ্যাওয়ার্ড:</b> 'জবি গবেষণা মেলা' আয়োজন এবং অনুষদভিত্তিক 'বেস্ট রিসার্চ অ্যাওয়ার্ড' চালু করা।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১৪. কেন্দ্রীয় ইন্সটিটিউশনাল এথিক্যাল রিভিউ বোর্ড গঠন:</b> আগ্রহী শিক্ষকদের নিয়ে বোর্ড গঠন করে পেপার সাবমিশনের আগে রিভিউ করানো।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>এথিক্যাল বোর্ড:</b> পেপার সাবমিশনের মান বজায় রাখতে 'ইনস্টিটিউশনাল এথিক্যাল রিভিউ বোর্ড' কার্যকর করা।</span>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১৫. গবেষণা কেন্দ্রগুলোর কার্যক্রম রিভিউ করা:</b> রিসার্চ ক্লাবগুলোর মানোন্নয়নে অভিজ্ঞদের নিয়ে কাজ করা।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>২৩. আন্তর্জাতিক র‍্যাংকিংয়ে উন্নতি:</b> উপরোক্ত কার্যক্রম বাস্তবায়নের মাধ্যমে বিশ্ববিদ্যালয়ের র‍্যাংকিং এগিয়ে নেয়া।</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Category: শিক্ষার্থীর অধিকার ও ক্যাম্পাস কল্যাণ -->
-                    <div>
-                        <h3 class="flex items-center text-2xl font-bold text-indigo-700 mb-6 border-b-2 border-indigo-200 pb-2">
-                            <i data-lucide="shield" class="w-6 h-6 mr-3"></i>
-                            শিক্ষার্থীর অধিকার ও ক্যাম্পাস কল্যাণ
-                        </h3>
-                        <ul class="list-none space-y-4">
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১৭. ক্যাম্পাসের খাবার ও পানির মান নিয়ে গবেষণা:</b> সংশ্লিষ্ট সম্পাদকদের সাথে সমন্বয় করে খাবারের মান পর্যবেক্ষণ।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১৮. পরিবেশগত মান পর্যবেক্ষণ:</b> ক্যাম্পাসের পরিবেশগত মান পর্যবেক্ষণ করে উন্নয়নের জন্য রিপোর্ট প্রদান।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>১৯. গবেষণার ফলাফলের ভিত্তিতে প্রশাসনকে সুপারিশ:</b> শিক্ষার্থীদের কল্যাণে গবেষণার ফলাফল প্রশাসনকে জানিয়ে কার্যক্রম শুরু করা।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>২৪. শিক্ষার্থীদের মতামত গ্রহণ:</b> শিক্ষা কার্যক্রমের উন্নয়নে শিক্ষার্থীদের মতামত শুনে কাজ করা।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>২৫. সুষ্ঠু রুটিন ও ন্যায্য মূল্যায়ন:</b> সেমিস্টার শুরুতে রুটিন, অ্যাসাইনমেন্টে ন্যূনতম ৭ দিন সময় এবং শিক্ষার্থীদের উপর অযৌক্তিক সিদ্ধান্ত না চাপানো।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>২৬. নিয়মিত ক্লাস ও শিক্ষকের জবাবদিহি:</b> বাদ দেওয়া ক্লাসের বিকল্প ক্লাস, টেকনিক্যাল কোর্সে পূর্ণ ল্যাবওয়ার্ক নিশ্চিত করা।</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3 mt-1 flex-shrink-0"></i>
-                                <span><b>২৭. শিক্ষার্থীর অধিকার সুরক্ষা:</b> ভয়হীনভাবে অভিযোগ জানানোর জন্য 'স্টুডেন্ট গ্রাইভ্যান্স সেল' গঠন ও ন্যায্য মূল্যায়ন নিশ্চিত করা।</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-gray-700"><b>সুষ্ঠু একাডেমিক পরিবেশ:</b> সেমিস্টার শুরুতে রুটিন প্রদান, অ্যাসাইনমেন্টে পর্যাপ্ত সময় এবং মিস হওয়া ক্লাসের মেকআপ ক্লাস নিশ্চিত করা।</span>
                             </li>
                         </ul>
                     </div>
@@ -294,119 +251,116 @@
         <section id="experience" class="py-16 bg-gray-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
-                    সামাজিক ও সাংস্কৃতিক সংগঠনে কাজের অভিজ্ঞতা
+                    সাংগঠনিক অভিজ্ঞতা ও নেতৃত্ব
                 </h2>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    <!-- Experience Card 1 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="font-bold text-lg text-indigo-700">Last Night Scholars - JnU</h4>
-                        <p class="text-sm text-gray-600">সভাপতি (President & Founder)</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Item -->
+                    <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition text-center border-t-4 border-indigo-500">
+                        <h4 class="font-bold text-gray-800">Last Night Scholars - JnU</h4>
+                        <p class="text-sm text-indigo-600 font-medium mt-1">সভাপতি (President)</p>
                     </div>
-                    <!-- Experience Card 2 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="font-bold text-lg text-indigo-700">JnU IT Society</h4>
-                        <p class="text-sm text-gray-600">দপ্তর সম্পাদক</p>
+                    <!-- Item -->
+                    <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition text-center border-t-4 border-indigo-500">
+                        <h4 class="font-bold text-gray-800">JnU IT Society</h4>
+                        <p class="text-sm text-indigo-600 font-medium mt-1">দপ্তর সম্পাদক</p>
                     </div>
-                    <!-- Experience Card 3 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="font-bold text-lg text-indigo-700">JnU Research & Higher Study Society</h4>
-                        <p class="text-sm text-gray-600">জিসিসিসি (GCCC)</p>
+                    <!-- Item -->
+                    <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition text-center border-t-4 border-indigo-500">
+                        <h4 class="font-bold text-gray-800">JnU Research & Higher Study Society</h4>
+                        <p class="text-sm text-indigo-600 font-medium mt-1">GCCC</p>
                     </div>
-                    <!-- Experience Card 4 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="font-bold text-lg text-indigo-700">Statistics Debating Club, JnU</h4>
-                        <p class="text-sm text-gray-600">প্রচার সম্পাদক</p>
+                    <!-- Item -->
+                    <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition text-center border-t-4 border-indigo-500">
+                        <h4 class="font-bold text-gray-800">Statistics Debating Club</h4>
+                        <p class="text-sm text-indigo-600 font-medium mt-1">প্রচার সম্পাদক</p>
                     </div>
-                    <!-- Experience Card 5 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="font-bold text-lg text-indigo-700">TEDx Jagannath University</h4>
-                        <p class="text-sm text-gray-600">টিম লীড - মার্কেটিং এবং কমিউনিকেশন</p>
+                    <!-- Item -->
+                    <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition text-center border-t-4 border-indigo-500">
+                        <h4 class="font-bold text-gray-800">TEDx Jagannath University</h4>
+                        <p class="text-sm text-indigo-600 font-medium mt-1">টিম লীড (মার্কেটিং)</p>
                     </div>
-                    <!-- Experience Card 6 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="font-bold text-lg text-indigo-700">10 Minute School</h4>
-                        <p class="text-sm text-gray-600">জুনিয়র শিক্ষক (Doubt Solver)</p>
-                    </div>
-                    <!-- Experience Card 7 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="font-bold text-lg text-indigo-700">Statistics Club, JnU</h4>
-                        <p class="text-sm text-gray-600">Executive Member</p>
+                    <!-- Item -->
+                    <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition text-center border-t-4 border-indigo-500">
+                        <h4 class="font-bold text-gray-800">10 Minute School</h4>
+                        <p class="text-sm text-indigo-600 font-medium mt-1">জুনিয়র শিক্ষক</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Activism & Philosophy Section -->
+        <!-- Philosophy Section -->
         <section id="activism" class="py-16 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                    <!-- Political Philosophy -->
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">
-                            রাজনৈতিক দর্শন
-                        </h3>
-                        <p class="text-gray-700 leading-relaxed italic">
-                            "আমি মূলধারার রাজনীতির সাথে যুক্ত নেই, যদিও তাদের সার্কিটের ভাই-ব্রাদার কে আমি সম্মান করি তাদের দর্শনের জন্য। আমি চাই শিক্ষার্থীদের সময়, শ্রম কে সঠিকভাবে কাজে লাগিয়ে দ্রুত অগ্রগতি, আমি শোডাউন নীতিতে বিশ্বাসী নই।"
-                        </p>
-                    </div>
+            <div class="container mx-auto px-4 text-center max-w-3xl">
+                <i data-lucide="quote" class="w-10 h-10 text-indigo-300 mx-auto mb-4"></i>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">রাজনৈতিক দর্শন</h2>
+                <p class="text-lg text-gray-600 italic leading-relaxed">
+                    "আমি মূলধারার রাজনীতির লেজুড়বৃত্তিতে বিশ্বাসী নই। আমি চাই শিক্ষার্থীদের মেধা, সময় ও শ্রমকে সঠিকভাবে কাজে লাগিয়ে ক্যাম্পাসের প্রকৃত একাডেমিক অগ্রগতি নিশ্চিত করতে। শোডাউন নয়, কাজেই আমার পরিচয়।"
+                </p>
+            </div>
+        </section>
 
-                    <!-- Role in July Revolution -->
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">
-                            জুলাই গণঅভ্যুত্থানে ভূমিকা
-                        </h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            আমার দাদা মুক্তিযোদ্ধা হওয়ার পরেও ১৬ জুলাই, ২০২৪ তারিখ হতে আমি সক্রিয়ভাবে গণঅভ্যুত্থানে যুক্ত ছিলাম। অনলাইন ও অফলাইনে একজন সাধারণ শিক্ষার্থী হিসেবে যতটুকু অবদান রাখা যায়, আমি চেষ্টা করেছি।
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="https://www.facebook.com/share/1PKSnVQwbv/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline flex items-center">
-                                <i data-lucide="facebook" class="w-4 h-4 mr-1"></i>
-                                ১৬ জুলাই এর পোস্ট
-                            </a>
-                            <a href="https://www.facebook.com/share/14NhD4DEqfb/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline flex items-center">
-                                <i data-lucide="facebook" class="w-4 h-4 mr-1"></i>
-                                ৩ আগস্ট এর পোস্ট
-                            </a>
-                            <a href="https://www.facebook.com/share/v/19oJBWha8V/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline flex items-center">
-                                <i data-lucide="facebook" class="w-4 h-4 mr-1"></i>
-                                ৫ আগস্ট এর পোস্ট
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <!-- Feedback Section (New) -->
+        <section id="feedback" class="py-12 bg-indigo-50">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-2xl font-bold text-indigo-900 mb-4">আপনার মতামত আমাদের জন্য গুরুত্বপূর্ণ</h2>
+                <p class="text-indigo-700 mb-8 max-w-xl mx-auto">শিক্ষা ও গবেষণা বিষয়ক যেকোনো পরামর্শ বা অভিযোগ থাকলে আমাদের জানান। আমরা আপনার মতামতকে গুরুত্ব দিয়ে ইশতেহার ও কার্যক্রমে প্রতিফলন ঘটাবো।</p>
+                
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeYDJhfa_1xE_pkL5Tr-XHdamgWCDQmFXa5w4zyB4YYWpMtA/viewform?usp=dialog" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transform hover:-translate-y-1 transition duration-300">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    মতামত / পরামর্শ দিন
+                </a>
             </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-indigo-900 text-white py-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold mb-2">
-                আপনার মূল্যবান ভোট দিয়ে জয়যুক্ত করুন
-            </h2>
-            <h3 class="text-4xl font-extrabold text-amber-300 mb-3">
-                মোঃ শাহরিয়ার যুবায়ের
-            </h3>
-            <p class="text-2xl text-indigo-200 mb-8">
-                শিক্ষা ও গবেষণা বিষয়ক সম্পাদক
-            </p>
+    <footer class="bg-indigo-900 text-white py-12 border-t border-indigo-800">
+        <div class="container mx-auto px-4 text-center">
+            
+            <div class="mb-8">
+                <div class="inline-block bg-white text-indigo-900 font-bold px-4 py-1 rounded-full mb-4">
+                    ব্যালট নং ৫
+                </div>
+                <h2 class="text-3xl font-bold mb-2">আপনার মূল্যবান ভোট প্রত্যাশী</h2>
+                <h3 class="text-4xl font-extrabold text-amber-400 mt-2">মোঃ শাহরিয়ার যুবায়ের</h3>
+                <p class="text-xl text-indigo-200 mt-2">শিক্ষা ও গবেষণা বিষয়ক সম্পাদক পদপ্রার্থী</p>
+            </div>
 
-            <div class="flex justify-center gap-6">
-                <a href="https://www.linkedin.com/in/shahriarjubayer/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-amber-300 transition duration-300" title="LinkedIn">
-                    <i data-lucide="linkedin" class="w-8 h-8"></i>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="https://jnucsu.com/candidate/235cbb69-df37-4dd7-b216-0a63b7fc4376" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-2 text-indigo-200 hover:text-white transition">
+                    <div class="p-3 bg-indigo-800 rounded-full group-hover:bg-green-600 transition">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-sm">JnUCSU Profile</span>
                 </a>
-                <a href="https://www.facebook.com/share/1BdopXJ6iB/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-amber-300 transition duration-300" title="Facebook">
-                    <i data-lucide="facebook" class="w-8 h-8"></i>
+                <a href="https://www.facebook.com/jubayershh" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-2 text-indigo-200 hover:text-white transition">
+                    <div class="p-3 bg-indigo-800 rounded-full group-hover:bg-blue-600 transition">
+                        <i data-lucide="facebook" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-sm">Facebook</span>
+                </a>
+                <a href="https://www.linkedin.com/in/shahriarjubayer" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-2 text-indigo-200 hover:text-white transition">
+                    <div class="p-3 bg-indigo-800 rounded-full group-hover:bg-blue-700 transition">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-sm">LinkedIn</span>
                 </a>
             </div>
+
+            <p class="text-indigo-400 text-sm">
+                &copy; ২০২৫ জকসু নির্বাচন ক্যাম্পেইন | মোঃ শাহরিয়ার যুবায়ের
+            </p>
         </div>
     </footer>
 
     <!-- Script to initialize icons -->
     <script>
         lucide.createIcons();
-    </Gscript>
+    </script>
 
 </body>
 </html>
